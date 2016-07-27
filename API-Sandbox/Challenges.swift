@@ -77,9 +77,10 @@ internal func exerciseTwo() {
     let topMovieData = moviesData["feed"]["entry"][0]
     let topMovie = Movie(json: topMovieData)
     
+    
     // Uncomment this print statement when you are ready to check your code!
     
-//    print("The top movie is \(topMovie.name) by \(topMovie.rightsOwner). It costs $\(topMovie.price) and was released on \(topMovie.releaseDate). You can view it on iTunes here: \(topMovie.link)")
+print("The top movie is \(topMovie.name) by \(topMovie.rightsOwner). It costs $\(topMovie.price) and was released on \(topMovie.releaseDate). You can view it on iTunes here: \(topMovie.link)")
 }
 
 internal func exerciseThree() {
@@ -104,8 +105,13 @@ internal func exerciseThree() {
      Figure out a way to turn the allMoviesData array into Movie structs!
      
      */
+    
     var allMovies: [Movie] = []
     
+    for i in allMoviesData {
+        let movie = Movie(json: i)
+        allMovies.append(movie)
+    }
     
     
     
@@ -116,8 +122,13 @@ internal func exerciseThree() {
      contains the `String` "Disney". Iterate over all the values in `allMovies` to check!
      
      */
-//    print("The following movies are Disney movies:")
-    
+print("The following movies are Disney movies:")
+
+    for movie in allMovies {
+        if movie.rightsOwner.containsString("Disnay") {
+            print(movie.name)
+        }
+    }
     
     
     
@@ -127,8 +138,13 @@ internal func exerciseThree() {
      movie that costs less than $15. Iterate over all the values in `allMovies` to check!
      
      */
-//    print("The following movies are cost less than $15:")
-    
+print("The following movies are cost less than $15:")
+
+    for movie in allMovies {
+        if movie.price < 15.00 {
+            print("\(movie.name): \(movie.price)")
+        }
+    }
     
     
     
@@ -138,8 +154,13 @@ internal func exerciseThree() {
      each movie released in 2016. Iterate over all the values in `allMovies` to check!
      
      */
-//    print("The following movies were released in 2016:")
-    
+print("The following movies were released in 2016:")
+
+    for movie in allMovies {
+        if movie.releaseDate.containsString("2016") {
+            print("\(movie.name) was released on \(movie.releaseDate)")
+        }
+    }
     
     
     
